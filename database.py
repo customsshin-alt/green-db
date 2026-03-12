@@ -24,11 +24,11 @@ def _get_postgres_url():
         if not pg:
             return None
         if isinstance(pg, str):
-            return pg
+            return _ensure_sslmode(pg)
         if pg.get("url"):
-            return pg["url"]
+            return _ensure_sslmode(pg["url"])
         if pg.get("postgres"):
-            return pg["postgres"]
+            return _ensure_sslmode(pg["postgres"])
         # dict 형태: host, port, database, user, password
         host = pg.get("host", "localhost")
         port = pg.get("port", 5432)
@@ -38,9 +38,23 @@ def _get_postgres_url():
         if not database or not user:
             return None
         password = quote_plus(password) if password else ""
-        return f"postgresql://{user}:{password}@{host}:{port}/{database}"
+        url = f"postgresql://{user}:{password}@{host}:{port}/{database}"
+        # 클라우드 DB는 대부분 SSL 필요
+        url = _ensure_sslmode(url)
+        return url
     except Exception:
         return None
+
+
+def _ensure_sslmode(url: str) -> str:
+    """PostgreSQL URL에 sslmode 없으면 require 추가 (클라우드 연결용)."""
+    if "postgresql://" not in url and "postgres://" not in url:
+        return url
+    if "sslmode=" in url or "ssl=" in url:
+        return url
+    sep = "&" if "?" in url else "?"
+    return f"{url}{sep}sslmode=require"
+
 
 _postgres_url = _get_postgres_url()
 if _postgres_url:
