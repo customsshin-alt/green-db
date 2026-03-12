@@ -1,0 +1,97 @@
+﻿Sheets: ['Sheet1', 'Sheet2', 'Sheet5']
+
+--- Sheet: Sheet1 ---
+     0                    1              2                                    3                 4    5    6    7                                            8                       9
+0  NaN        < 사전분석 체크리스트>            NaN                                  NaN               NaN  NaN  NaN  NaN                                      작성일자 :                   작성자 : 
+1  NaN                  NaN            NaN                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+2  NaN          [지원기업 기본사항]            NaN                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+3  NaN                   구분             항목                                   내용             관련 서류   수취   요청   없음                                       비고/가이드  Comment / Action Item 
+4  NaN           기업\n기본\n정보            회사명                                  NaN            회사소개서   NaN  NaN  NaN                                       법인명 기준                     NaN
+5  NaN                  NaN        사업자등록번호                                  NaN            사업자등록증  NaN  NaN  NaN                                          NaN                     NaN
+6  NaN                  NaN         통관고유부호                                  NaN               NaN  NaN  NaN  NaN                      있으면 번호 / 없으면, 신청서 양식 제공                     NaN
+7  NaN                  NaN          본사 주소                                  NaN               NaN  NaN  NaN  NaN                                      상세주소 포함                     NaN
+8  NaN                  NaN        기타 사업장                                   NaN               NaN  NaN  NaN  NaN         본사와 다른 생산시설, 수출물품 보관장소 등이 있는 경우 필요 시                     NaN
+9  NaN                  NaN       주요 생산 제품                                  NaN               NaN  NaN  NaN  NaN                       수출예정 제품 포함 대표 제품 3개 이내                     NaN
+10 NaN                  NaN           담당자                                   NaN               NaN  NaN  NaN  NaN                                 소속 / 이름 / 직책                     NaN
+11 NaN                  NaN            연락처                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+12 NaN                  NaN            이메일                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+13 NaN                  NaN    특허, 인증 보유현황                                  NaN          특허증, 인증서  NaN  NaN  NaN                                          NaN                     NaN
+14 NaN        수출\n경험\n및\n현황   최근 3년간 수출 경험  있음 (     ) / 없음 (     ) / 모름 (    )            수출신고필증  NaN  NaN  NaN                     대략 최근 3년 이내에 수출 경험이 있는지                      NaN
+15 NaN                  NaN       수출 경험 국가                                  NaN               NaN  NaN  NaN  NaN                           수출경험이 있는 경우 국가명 나열                     NaN
+16 NaN                  NaN       주요 수출 제품                                  NaN               NaN  NaN  NaN  NaN                            수출경험이 있는 주요 제품 기재                     NaN
+17 NaN                  NaN       직전년도 수출액                                  NaN               NaN  NaN  NaN  NaN                                       USD 기준                     NaN
+18 NaN                  NaN    수출 담당 조직 여부                                  NaN               NaN  NaN  NaN  NaN                있음 / 없음 \n(있다면 조직 구성 대략 설명기재)                     NaN
+19 NaN                  NaN        외부 협력업체                                  NaN               NaN  NaN  NaN  NaN                           포워더 / 관세사 / 무역대행 등                     NaN
+20 NaN                  NaN            NaN                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+21 NaN      [현지 실증 지원사업 관련]            NaN                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+22 NaN                   구분             항목                                   내용             관련 서류   수취   요청   없음                                       비고/가이드  Comment / Action Item 
+23 NaN       수출\n예정\n거래\n정보       수출 대상 국가                                  NaN               NaN  NaN  NaN  NaN                                정해진 것이 있다면 기재                     NaN
+24 NaN                  NaN       수출 예정 시기                                  NaN               NaN  NaN  NaN  NaN                                정해진 것이 있다면 기재                     NaN
+25 NaN                  NaN       예상 수출 물량                                  NaN               NaN  NaN  NaN  NaN                       정해진 것이 있다면 기재 (수량, 단위)                     NaN
+26 NaN                  NaN       계약 체결 여부                                  NaN          계약서, 발주서  NaN  NaN  NaN                                 체결완료/협의중/미체결                     NaN
+27 NaN                  NaN           거래조건                                  NaN               NaN  NaN  NaN  NaN                            FOB/CIF/DDP/DAP 등                     NaN
+28 NaN           통관\n관련\n정보   대상국 수출 경험 여부                                  NaN               NaN  NaN  NaN  NaN                                      있음 / 없음                     NaN
+29 NaN                  NaN   현지 수입자 확보 여부                                  NaN               NaN  NaN  NaN  NaN              정해진 것이 있다면 기재\n(바이어/현지파트너/실증기관)                     NaN
+30 NaN                  NaN     현지 수입자 회사명                                  NaN               NaN  NaN  NaN  NaN                            정해진 것이 있다면 회사명 기재                     NaN
+31 NaN                  NaN          거래 목적                                  NaN               NaN  NaN  NaN  NaN                 정해진 것이 있다면 기재\n(판매/실증/연구/설치)                     NaN
+32 NaN                  NaN  현지 수입 라이선스 보유                                  NaN               NaN  NaN  NaN  NaN                   보유 / 미보유 / 모르겠음 (있다면 그 내용)                     NaN
+33 NaN                  NaN    제품 인증 필요 여부                                  NaN               NaN  NaN  NaN  NaN                   필요 / 불필요 / 모르겠음 (있다면 그 내용)                     NaN
+34 NaN                  NaN    지원 기업 보유 인증                                  NaN               NaN  NaN  NaN  NaN                           CE / FCC / KC 등 나열                     NaN
+35 NaN               물류\n정보         수출 출발지                                  NaN               NaN  NaN  NaN  NaN                                        출발 지역                     NaN
+36 NaN                  NaN   컨테이너 작업 가능여부                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+37 NaN                  NaN     선적 항만 / 공항                                  NaN               NaN  NaN  NaN  NaN                                지정된 것이 있다면 기재                     NaN
+38 NaN                  NaN          운송 방식                                  NaN               NaN  NaN  NaN  NaN                                지정된 것이 있다면 기재                     NaN
+39 NaN                  NaN          화물 형태                                  NaN               NaN  NaN  NaN  NaN  일반 / 중량 / 정밀장비 / 위험물 등 \n(알고 있는 내용이 있다면 기재)                     NaN
+40 NaN                  NaN    특수 포장 필요 여부                                  NaN               NaN  NaN  NaN  NaN                     필요 / 불필요 (필요하다면 그 내용 기재)                     NaN
+41 NaN                  NaN  현지 설치가 필요지 여부                                  NaN               NaN  NaN  NaN  NaN                     필요 / 불필요 (필요하다면 그 내용 기재)                     NaN
+42 NaN                  NaN     하역 항만 / 공항                                  NaN               NaN  NaN  NaN  NaN                                지정된 것이 있다면 기재                     NaN
+43 NaN                  NaN         수입 도착지                                  NaN               NaN  NaN  NaN  NaN                                지정된 것이 있다면 기재                     NaN
+44 NaN                  NaN    현지 하역 장비 필요                                  NaN               NaN  NaN  NaN  NaN                     필요 / 불필요 (필요하다면 그 내용 기재)                     NaN
+45 NaN               품목\n정보             품명                                  NaN             제품 사진  NaN  NaN  NaN                                       정식 제품명                     NaN
+46 NaN                  NaN         제품 규격                                   NaN               NaN  NaN  NaN  NaN                                     규격 / 모델명                     NaN
+47 NaN                  NaN          제품 용도                                  NaN           제품 카탈로그  NaN  NaN  NaN                                        사용 목적                     NaN
+48 NaN                  NaN       제품 주요 기능                                  NaN           제품 기술자료  NaN  NaN  NaN                                     핵심 기능 요약                     NaN
+49 NaN                  NaN          제품 구성                                  NaN               NaN  NaN  NaN  NaN                                       구성품 목록                     NaN
+50 NaN                  NaN    기타 제품관련 정보                                   NaN               NaN  NaN  NaN  NaN                필요 시 재질, 작동원리 등 기타 제품 \n관련 정보                     NaN
+51 NaN                  NaN          제품 단가                                  NaN               NaN  NaN  NaN  NaN                                   USD 또는 KRW                     NaN
+52 NaN                  NaN          제품 중량                                  NaN               NaN  NaN  NaN  NaN                                        kg 단위                     NaN
+53 NaN                  NaN          제품 크기                                  NaN               NaN  NaN  NaN  NaN                                가로×세로×높이 (mm)                     NaN
+54 NaN          HS CODE\n정보  알고 있는 HS CODE                                  NaN               NaN  NaN  NaN  NaN                                      10자리 코드                     NaN
+55 NaN                  NaN  HS CODE 판단 근거                                  NaN  품목분류의견서\n사전심사결정문  NaN  NaN  NaN   자체분류 / 관세사 자문 / 수입자 요청\n국내 또는 국외 품목분류사전심사                      NaN
+56 NaN               물류\n정보         수출 출발지                                  NaN               NaN  NaN  NaN  NaN                                        출발 지역                     NaN
+57 NaN                  NaN   컨테이너 작업 가능여부                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+58 NaN                  NaN     선적 항만 / 공항                                  NaN               NaN  NaN  NaN  NaN                                지정된 것이 있다면 기재                     NaN
+59 NaN                  NaN          운송 방식                                  NaN               NaN  NaN  NaN  NaN                                지정된 것이 있다면 기재                     NaN
+60 NaN                  NaN          화물 형태                                  NaN               NaN  NaN  NaN  NaN  일반 / 중량 / 정밀장비 / 위험물 등 \n(알고 있는 내용이 있다면 기재)                     NaN
+61 NaN                  NaN    특수 포장 필요 여부                                  NaN               NaN  NaN  NaN  NaN                     필요 / 불필요 (필요하다면 그 내용 기재)                     NaN
+62 NaN                  NaN  현지 설치 지원 필요여부                                  NaN               NaN  NaN  NaN  NaN                     필요 / 불필요 (필요하다면 그 내용 기재)                     NaN
+63 NaN                  NaN     하역 항만 / 공항                                  NaN               NaN  NaN  NaN  NaN                                지정된 것이 있다면 기재                     NaN
+64 NaN                  NaN         수입 도착지                                  NaN               NaN  NaN  NaN  NaN                                지정된 것이 있다면 기재                     NaN
+65 NaN                  NaN  현지 하역 장비 필요여부                                  NaN               NaN  NaN  NaN  NaN                     필요 / 불필요 (필요하다면 그 내용 기재)                     NaN
+66 NaN                  NaN            NaN                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+67 NaN            [기타 제반사항]            NaN                                  NaN               NaN  NaN  NaN  NaN                                          NaN                     NaN
+68 NaN                   구분             항목                                   내용             관련 서류   수취   요청   없음                                       비고/가이드  Comment / Action Item 
+69 NaN          FTA\n및\n원산지         제품 제조국                                  NaN               NaN  NaN  NaN  NaN                                          국가명                     NaN
+70 NaN                  NaN   원산지증명서 발급 경험                                  NaN            원산지증명서  NaN  NaN  NaN                                      있음 / 없음                     NaN
+71 NaN                  NaN   FTA 인증수출자 여부                                  NaN               인증서  NaN  NaN  NaN                                     해당 / 미해당                     NaN
+72 NaN                  NaN          제조 방식                                  NaN               NaN  NaN  NaN  NaN                                 자체 / 외주 / 혼합                     NaN
+73 NaN                  NaN       주요 제조 공정                                  NaN             제조공정도  NaN  NaN  NaN                                     공정 단계 기술                     NaN
+74 NaN                  NaN         주요 원재료                                  NaN        BOM, 원재료내역  NaN  NaN  NaN                                         원재료명                     NaN
+75 NaN                  NaN   수입 원재료 사용 여부                                  NaN               NaN  NaN  NaN  NaN                                     사용 / 미사용                     NaN
+76 NaN                  NaN  판매이력, 구매이력 관리                                  NaN         ERP 화면 캡처  NaN  NaN  NaN                      판매정보, 구매정보 관리방식 확인 / 기재                     NaN
+77 NaN  애로\n사항 \n및\n 요청\n사항   수출 진행 시 우려사항                                  NaN               NaN  NaN  NaN  NaN                                        자유 기술                     NaN
+78 NaN                  NaN     통관 관련 애로사항                                  NaN               NaN  NaN  NaN  NaN                                        자유 기술                     NaN
+79 NaN                  NaN     물류 관련 애로사항                                  NaN               NaN  NaN  NaN  NaN                                        자유 기술                     NaN
+80 NaN                  NaN     인증 관련 애로사항                                  NaN               NaN  NaN  NaN  NaN                                        자유 기술                     NaN
+81 NaN                  NaN        기타 요청사항                                  NaN               NaN  NaN  NaN  NaN                                        자유 기술                     NaN
+82 NaN                   기타      담당자 교육 수준                                  NaN               NaN  NaN  NaN  NaN                                     컨설턴트가 기재                     NaN
+
+--- Sheet: Sheet2 ---
+Empty DataFrame
+Columns: []
+Index: []
+
+--- Sheet: Sheet5 ---
+Empty DataFrame
+Columns: []
+Index: []

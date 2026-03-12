@@ -1,0 +1,16 @@
+# Web framework
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+
+# PDF processing
+PyMuPDF==1.25.2
+
+# Email (async SMTP)
+aiosmtplib==3.0.2
+
+# File handling & validation
+python-multipart==0.0.18
+pydantic-settings==2.6.1
+
+# CORS
+starlette==0.41.2

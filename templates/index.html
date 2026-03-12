@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관세 분석 - INVOICE 업로드</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --border: #2d3a4d;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --success: #22c55e;
+      --error: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 520px;
+    }
+    .tabs {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .tabs button {
+      flex: 1;
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .tabs button.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .tabs button:hover:not(.active) {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+    .dropzone {
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 1rem;
+    }
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--accent);
+      background: rgba(59, 130, 246, 0.08);
+    }
+    .dropzone p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .dropzone p strong { color: var(--text); }
+    input[type="file"] {
+      display: none;
+    }
+    .file-list {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-height: 140px;
+      overflow-y: auto;
+    }
+    .file-list .file-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .file-list .file-row:last-child { border-bottom: none; }
+    .file-list .file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-list .btn-remove {
+      flex-shrink: 0;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.75rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .file-list .btn-remove:hover { background: rgba(239, 68, 68, 0.2); color: var(--error); border-color: var(--error); }
+    .btn {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .btn-secondary {
+      background: var(--border);
+      color: var(--text);
+      margin-top: 0.75rem;
+    }
+    .btn-secondary:hover {
+      background: #3d4d66;
+    }
+    .msg {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+    .msg.success { background: rgba(34, 197, 94, 0.15); color: var(--success); }
+    .msg.error { background: rgba(239, 68, 68, 0.15); color: var(--error); }
+    .msg.hide { display: none; }
+    .status-box {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .status-box strong { color: var(--text); }
+    .uploaded-section { margin-top: 1rem; }
+    .uploaded-section h4 { font-size: 0.9rem; color: var(--text-muted); margin: 0 0 0.5rem 0; }
+    .uploaded-list { font-size: 0.8rem; max-height: 160px; overflow-y: auto; }
+    .uploaded-list .file-row { display: flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0; }
+    .uploaded-list .file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .uploaded-list .btn-remove { flex-shrink: 0; padding: 0.2rem 0.45rem; font-size: 0.7rem; border: 1px solid var(--border); background: transparent; color: var(--text-muted); border-radius: 4px; cursor: pointer; }
+    .uploaded-list .btn-remove:hover { background: rgba(239, 68, 68, 0.2); color: var(--error); }
+    .spinner { display: inline-block; width: 1em; height: 1em; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 0.35rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <h1>관세 분석 프로그램</h1>
+  <p class="subtitle">INVOICE · 원산지증명서 PDF 업로드</p>
+
+  <div class="card">
+    <div class="tabs">
+      <button type="button" class="active" data-type="invoice">INVOICE</button>
+      <button type="button" data-type="co">원산지증명서(CO)</button>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <p><strong>파일을 여기에 끌어다 놓거나</strong></p>
+      <p>클릭하여 PDF 선택 (여러 파일 가능)</p>
+      <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple>
+    </div>
+    <div class="file-list" id="fileList"></div>
+
+    <button type="button" class="btn btn-primary" id="uploadBtn" disabled>업로드</button>
+
+    <div class="status-box" id="statusBox">
+      <strong>현재 업로드된 파일:</strong> <span id="statusText">확인 중…</span>
+    </div>
+    <div class="uploaded-section" id="uploadedSection">
+      <h4>업로드된 파일 목록 (삭제 가능)</h4>
+      <div id="uploadedList" class="uploaded-list"></div>
+    </div>
+
+    <button type="button" class="btn btn-secondary" id="extractBtn">분석 실행 및 엑셀 다운로드</button>
+
+    <div id="msg" class="msg hide"></div>
+  </div>
+
+  <script>
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const extractBtn = document.getElementById('extractBtn');
+    const msgEl = document.getElementById('msg');
+    const statusText = document.getElementById('statusText');
+    const tabs = document.querySelectorAll('.tabs button');
+
+    let selectedType = 'invoice';
+    let pendingFiles = [];
+
+    async function refreshInputStatus() {
+      try {
+        const res = await fetch('/api/inputs');
+        const data = await res.json();
+        const inv = data.invoices.count || 0;
+        const co = data.co.count || 0;
+        if (inv + co === 0) {
+          statusText.textContent = '없음 (위에서 PDF 업로드)';
+        } else {
+          statusText.textContent = `인보이스 ${inv}개, 원산지증명서(CO) ${co}개`;
+        }
+        renderUploadedList(data);
+      } catch (_) {
+        statusText.textContent = '확인 실패';
+        document.getElementById('uploadedList').innerHTML = '';
+      }
+    }
+    function renderUploadedList(data) {
+      const el = document.getElementById('uploadedList');
+      const inv = (data.invoices && data.invoices.files) ? data.invoices.files : [];
+      const co = (data.co && data.co.files) ? data.co.files : [];
+      if (inv.length === 0 && co.length === 0) {
+        el.innerHTML = '<div class="file-row" style="color:var(--text-muted)">업로드된 파일 없음</div>';
+        return;
+      }
+      const rows = [];
+      inv.forEach(name => {
+        rows.push(`<div class="file-row"><span class="file-name" title="${escapeAttr(name)}">${escapeHtml(name)}</span><button type="button" class="btn-remove" data-type="invoice" data-name="${escapeAttr(name)}">삭제</button></div>`);
+      });
+      co.forEach(name => {
+        rows.push(`<div class="file-row"><span class="file-name" title="${escapeAttr(name)}">${escapeHtml(name)}</span><button type="button" class="btn-remove" data-type="co" data-name="${escapeAttr(name)}">삭제</button></div>`);
+      });
+      el.innerHTML = rows.join('');
+      el.querySelectorAll('.btn-remove').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          const type = e.currentTarget.dataset.type;
+          const name = e.currentTarget.dataset.name;
+          if (!confirm(`"${name}" 파일을 서버에서 삭제할까요?`)) return;
+          try {
+            const r = await fetch('/api/file?type=' + encodeURIComponent(type) + '&name=' + encodeURIComponent(name), { method: 'DELETE' });
+            const d = await r.json();
+            if (d.ok) {
+              showMsg(d.message || '삭제되었습니다.', 'success');
+              refreshInputStatus();
+            } else {
+              showMsg(d.message || '삭제 실패', 'error');
+            }
+          } catch (err) {
+            showMsg('삭제 중 오류: ' + err.message, 'error');
+          }
+        });
+      });
+    }
+    refreshInputStatus();
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedType = btn.dataset.type;
+        pendingFiles = [];
+        updateFileList();
+        hideMsg();
+      });
+    });
+
+    dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      const files = Array.from(e.dataTransfer.files).filter(f => f.name.toLowerCase().endsWith('.pdf'));
+      if (files.length) {
+        pendingFiles = pendingFiles.concat(files);
+        updateFileList();
+      } else {
+        showMsg('PDF 파일만 업로드할 수 있습니다.', 'error');
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length) {
+        pendingFiles = pendingFiles.concat(Array.from(fileInput.files));
+        updateFileList();
+        fileInput.value = '';
+      }
+    });
+
+    function updateFileList() {
+      if (!pendingFiles.length) {
+        fileList.innerHTML = '';
+        uploadBtn.disabled = true;
+        return;
+      }
+      fileList.innerHTML = pendingFiles.map((f, i) =>
+        `<div class="file-row" data-idx="${i}">
+          <span class="file-name" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</span>
+          <button type="button" class="btn-remove" data-idx="${i}" aria-label="목록에서 제거">삭제</button>
+        </div>`
+      ).join('');
+      fileList.querySelectorAll('.btn-remove').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(e.currentTarget.dataset.idx, 10);
+          pendingFiles.splice(idx, 1);
+          updateFileList();
+        });
+      });
+      uploadBtn.disabled = pendingFiles.length === 0;
+    }
+    function escapeHtml(s) {
+      const div = document.createElement('div');
+      div.textContent = s;
+      return div.innerHTML;
+    }
+    function escapeAttr(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;');
+    }
+
+    function showMsg(text, type) {
+      msgEl.textContent = text;
+      msgEl.className = 'msg ' + type;
+      msgEl.classList.remove('hide');
+    }
+    function hideMsg() {
+      msgEl.classList.add('hide');
+    }
+
+    uploadBtn.addEventListener('click', async () => {
+      if (!pendingFiles.length) return;
+      const form = new FormData();
+      form.append('type', selectedType);
+      pendingFiles.forEach(f => form.append('files', f));
+      uploadBtn.disabled = true;
+      hideMsg();
+      try {
+        const res = await fetch('/upload', { method: 'POST', body: form });
+        const data = await res.json();
+        if (data.ok) {
+          showMsg(`업로드 완료: ${data.saved.length}개 파일 (${data.folder})` + (data.errors.length ? '\n일부 실패: ' + data.errors.join(', ') : ''), 'success');
+          pendingFiles = [];
+          updateFileList();
+          refreshInputStatus();
+        } else {
+          showMsg(data.message || '업로드 실패', 'error');
+        }
+      } catch (e) {
+        showMsg('업로드 중 오류: ' + e.message, 'error');
+      }
+      uploadBtn.disabled = pendingFiles.length === 0;
+    });
+
+    extractBtn.addEventListener('click', async () => {
+      hideMsg();
+      extractBtn.disabled = true;
+      extractBtn.innerHTML = '<span class="spinner"></span> 분석 중… (OCR 등으로 시간이 걸릴 수 있습니다)';
+      try {
+        const res = await fetch('/extract', { method: 'POST' });
+        const data = await res.json();
+        if (data.ok && data.download) {
+          showMsg((data.message || '분석 완료 (Commercial Invoice 형식).') + ' 엑셀 파일을 다운로드합니다.', 'success');
+          window.location.href = data.download;
+        } else {
+          showMsg(data.message || '분석 실패', 'error');
+        }
+      } catch (e) {
+        showMsg('분석 중 오류: ' + e.message, 'error');
+      }
+      extractBtn.disabled = false;
+      extractBtn.innerHTML = '분석 실행 및 엑셀 다운로드';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+# DB 파일 (로컬 SQLite, GitHub에 업로드 제외)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Streamlit 시크릿 (클라우드 DB 주소 등, 업로드 제외)
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# 업로드 파일 (사용자 첨부 등)
+uploads/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# 기타
+*.log
+.env
+.env.local
