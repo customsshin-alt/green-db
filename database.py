@@ -137,6 +137,26 @@ def init_db() -> None:
     finally:
         session.close()
 
+    # 클라우드 DB 등에서 admin 이 없을 수 있으므로 별도 세션으로 한 번 더 확보
+    session2 = SessionLocal()
+    try:
+        admin = session2.query(User).filter(User.login_id == "admin").first()
+        if not admin:
+            session2.add(
+                User(
+                    login_id="admin",
+                    password_hash=hash_password("1234"),
+                    role=UserRole.ADMIN,
+                    is_approved=1,
+                    display_name="시스템관리자",
+                )
+            )
+            session2.commit()
+    except Exception:
+        session2.rollback()
+    finally:
+        session2.close()
+
 
 def get_session():
     """Return a new SQLAlchemy session (caller is responsible for closing)."""

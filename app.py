@@ -1835,6 +1835,8 @@ def main():
     misc_items_all = [MENU_MY_PROFILE, MENU_CONSULTANT_REGISTER, MENU_ASSIGN_CONSULTANT, MENU_COMPANY_DETAIL]
     if role in (UserRole.ADMIN, UserRole.KEITI):
         misc_items_all.append(MENU_COMPANY_REGISTER)
+    if role == UserRole.ADMIN:
+        misc_items_all.append(MENU_ADMIN)
 
     # 현재 메뉴가 어느 그룹에 속하는지에 따라 그룹은 항상 펼쳐진 상태로 유지
     if menu in progress_pages:
